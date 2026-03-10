@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Catch All Resale — Upload photos, get an instant quote, ship it free, and get paid within 48 hours. No meetups. No lowballers. Denver, Colorado.">
+  <title>Catch All Resale — Turn Clutter Into Cash</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* HOME-SPECIFIC STYLES */
+
+```
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: var(--nav-height);
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 64px 80px 80px;
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+  animation: fadeUp 0.8s ease both;
+}
+.hero-eyebrow-line { width: 28px; height: 1px; background: var(--sage); }
+.hero-eyebrow span {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 5.5vw, 80px);
+  font-weight: 400;
+  color: var(--bark);
+  letter-spacing: -0.03em;
+  line-height: 1.04;
+  margin-bottom: 28px;
+  animation: fadeUp 0.8s 0.1s ease both;
+}
+.hero-headline em { font-style: italic; color: var(--sage); }
+
+.hero-sub {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--clay);
+  max-width: 420px;
+  margin-bottom: 44px;
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.8s 0.3s ease both;
+}
+
+.hero-link {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--clay);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color var(--transition);
+}
+.hero-link:hover { color: var(--bark); }
+.hero-link::after { content: '→'; transition: transform var(--transition); }
+.hero-link:hover::after { transform: translateX(4px); }
+
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(196,168,130,0.25);
+  animation: fadeUp 0.8s 0.4s ease both;
+}
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 34px;
+  color: var(--bark);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+
+/* HERO RIGHT */
+.hero-right {
+  background: var(--bark);
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 1s 0.3s ease both;
+}
+.hero-right::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 65% 35%, var(--soil) 0%, var(--bark) 55%, #160C05 100%);
+}
+.hero-right-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 48px;
+  z-index: 1;
+}
+
+.recent-payouts {
+  background: rgba(253,250,245,0.06);
+  border: 1px solid rgba(196,168,130,0.12);
+  backdrop-filter: blur(8px);
+  padding: 28px;
+  margin-bottom: 16px;
+}
+.recent-payouts-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--sand);
+  margin-bottom: 16px;
+}
+.payout-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(196,168,130,0.08);
+}
+.payout-row:last-child { border-bottom: none; }
+.payout-item-name {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-style: italic;
+  color: var(--oat);
+}
+.payout-item-meta {
+  font-size: 11px;
+  color: var(--sand);
+  margin-top: 2px;
+  opacity: 0.7;
+}
+.payout-amount {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--leaf);
+  letter-spacing: -0.02em;
+}
+
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--sage);
+  padding: 11px 18px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+/* HOW IT WORKS */
+.hiw-section { background: var(--white); }
+.hiw-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 64px;
+}
+.hiw-step {
+  background: var(--cream);
+  padding: 48px 40px;
+  transition: background var(--transition);
+  position: relative;
+}
+.hiw-step:hover { background: var(--oat); }
+.hiw-num {
+  font-family: var(--font-display);
+  font-size: 80px;
+  color: rgba(196,168,130,0.18);
+  line-height: 1;
+  margin-bottom: 20px;
+  letter-spacing: -0.06em;
+}
+.hiw-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--bark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.hiw-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--bark);
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+.hiw-desc {
+  font-size: 15px;
+  color: var(--clay);
+  line-height: 1.7;
+}
+.hiw-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 24px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+
+/* WHAT WE BUY */
+.wwb-section { background: var(--bark); }
+.wwb-section .section-title { color: var(--oat); }
+.wwb-section .section-sub { color: var(--sand); }
+.wwb-section .section-eyebrow span { color: var(--leaf); }
+.wwb-section .section-eyebrow-line { background: var(--leaf); }
+
+.wwb-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-top: 56px;
+}
+.wwb-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(196,168,130,0.1);
+  padding: 36px 28px;
+  transition: all var(--transition);
+}
+.wwb-card:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(139,173,115,0.3);
+}
+.wwb-icon { font-size: 36px; margin-bottom: 20px; display: block; }
+.wwb-name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--oat);
+  margin-bottom: 8px;
+}
+.wwb-examples { font-size: 13px; color: var(--sand); line-height: 1.65; }
+.wwb-range {
+  margin-top: 20px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--leaf);
+}
+
+.wwb-cta {
+  margin-top: 40px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(196,168,130,0.1);
+  padding: 32px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.wwb-cta-text {}
+.wwb-cta-label {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sand);
+  margin-bottom: 8px;
+}
+.wwb-cta-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--oat);
+}
+
+/* SOCIAL PROOF */
+.proof-section { background: var(--cream); }
+.proof-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 56px;
+}
+.proof-card {
+  background: var(--white);
+  padding: 44px;
+  border-left: 3px solid transparent;
+  transition: border-color var(--transition);
+}
+.proof-card:hover { border-color: var(--sage); }
+.proof-quote {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-style: italic;
+  color: var(--bark);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+.proof-author {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+.proof-payout {
+  display: inline-block;
+  background: var(--sage);
+  color: var(--white);
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  margin-top: 12px;
+}
+
+/* IMPACT */
+.impact-section {
+  background: var(--sage);
+  padding: 100px 0;
+}
+.impact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.impact-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4vw, 52px);
+  color: var(--white);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+.impact-sub {
+  font-size: 17px;
+  color: rgba(253,250,245,0.75);
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+.impact-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+.impact-stat {
+  background: rgba(253,250,245,0.1);
+  padding: 32px 24px;
+}
+.impact-stat-num {
+  font-family: var(--font-display);
+  font-size: 40px;
+  color: var(--white);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.impact-stat-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(253,250,245,0.55);
+}
+
+/* CTA SECTION */
+.cta-section {
+  background: var(--white);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 140px 0;
+}
+.cta-bg-text {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: 18vw;
+  color: rgba(196,168,130,0.055);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+.cta-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+.cta-eyebrow-line { width: 24px; height: 1px; background: var(--sage); }
+.cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 68px);
+  color: var(--bark);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  max-width: 640px;
+  margin: 0 auto 20px;
+}
+.cta-sub {
+  font-size: 18px;
+  color: var(--clay);
+  line-height: 1.65;
+  max-width: 400px;
+  margin: 0 auto 48px;
+}
+.cta-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+.cta-region {
+  margin-top: 40px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sand);
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 60px 20px; }
+  .hero-right { min-height: 400px; }
+  .hiw-grid { grid-template-columns: 1fr; }
+  .wwb-grid { grid-template-columns: 1fr 1fr; }
+  .proof-grid { grid-template-columns: 1fr; }
+  .impact-inner { grid-template-columns: 1fr; gap: 40px; }
+}
+```
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">Catch <span>All</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="sell.html">Sell</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="sell.html" class="nav-cta">Get a Quote</a></li>
+    </ul>
+    <button class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-line"></div>
+        <span>Denver & Colorado Front Range</span>
+      </div>
+      <h1 class="hero-headline">
+        Your clutter,<br>
+        <em>cashed out.</em><br>
+        Today.
+      </h1>
+      <p class="hero-sub">
+        Upload photos. Get an instant quote. Ship it free.
+        We pay you within 48 hours — no meetups, no lowballers, no waiting.
+      </p>
+      <div class="hero-actions">
+        <a href="sell.html" class="btn btn-primary btn-lg">Get My Free Quote →</a>
+        <a href="#how-it-works" class="hero-link">See how it works</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">48h</div>
+          <div class="stat-label">Payout time</div>
+        </div>
+        <div>
+          <div class="stat-num">$0</div>
+          <div class="stat-label">Seller fees</div>
+        </div>
+        <div>
+          <div class="stat-num">Free</div>
+          <div class="stat-label">Shipping label</div>
+        </div>
+      </div>
+    </div>
+
+```
+<div class="hero-right">
+  <div class="hero-right-inner">
+    <div class="recent-payouts">
+      <div class="recent-payouts-label">Recent Payouts</div>
+      <div class="payout-row">
+        <div>
+          <div class="payout-item-name">Patagonia Fleece, L</div>
+          <div class="payout-item-meta">Grade A · Branded Apparel</div>
+        </div>
+        <div class="payout-amount">$38</div>
+      </div>
+      <div class="payout-row">
+        <div>
+          <div class="payout-item-name">Trek Mountain Bike</div>
+          <div class="payout-item-meta">Grade B · Outdoor Gear</div>
+        </div>
+        <div class="payout-amount">$120</div>
+      </div>
+      <div class="payout-row">
+        <div>
+          <div class="payout-item-name">Instant Pot Duo 6qt</div>
+          <div class="payout-item-meta">Grade A · Kitchen</div>
+        </div>
+        <div class="payout-amount">$32</div>
+      </div>
+      <div class="payout-row">
+        <div>
+          <div class="payout-item-name">Danby Mini Fridge</div>
+          <div class="payout-item-meta">Grade B · Appliances</div>
+        </div>
+        <div class="payout-amount">$45</div>
+      </div>
+    </div>
+    <div class="live-badge">
+      <div class="badge-dot"></div>
+      Paying sellers within 48 hours of receipt
+    </div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- HOW IT WORKS -->
+
+  <section class="section hiw-section" id="how-it-works">
+    <div class="container">
+      <div class="section-eyebrow reveal">
+        <div class="section-eyebrow-line"></div>
+        <span>The Process</span>
+      </div>
+      <h2 class="section-title reveal">Three steps.<br>Done forever.</h2>
+      <p class="section-sub reveal">If you've sold on Facebook Marketplace and hated every second of it — this is the antidote.</p>
+
+```
+  <div class="hiw-grid">
+    <div class="hiw-step reveal">
+      <div class="hiw-num">01</div>
+      <div class="hiw-icon">📸</div>
+      <div class="hiw-title">Upload & Quote</div>
+      <p class="hiw-desc">Take a few photos on your phone. Tell us the brand, condition, and category. We'll send you a fair quote — fast. No negotiation, no drama.</p>
+      <div class="hiw-time">⏱ Under 5 minutes</div>
+    </div>
+    <div class="hiw-step reveal reveal-d1">
+      <div class="hiw-num">02</div>
+      <div class="hiw-icon">📦</div>
+      <div class="hiw-title">Ship It Free</div>
+      <p class="hiw-desc">Accept the quote and we'll email you a prepaid shipping label. Box it up and drop it off. Or order our Stuff-Simplify Kit™ for even easier packing.</p>
+      <div class="hiw-time">⏱ Drop off in minutes</div>
+    </div>
+    <div class="hiw-step reveal reveal-d2">
+      <div class="hiw-num">03</div>
+      <div class="hiw-icon">💸</div>
+      <div class="hiw-title">Get Paid</div>
+      <p class="hiw-desc">We verify your item and send payment within 48 hours of receipt — via Venmo, PayPal, or direct deposit. We handle listing, selling, and shipping from there.</p>
+      <div class="hiw-time">⏱ Paid in 48 hours</div>
+    </div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- WHAT WE BUY -->
+
+  <section class="section wwb-section">
+    <div class="container">
+      <div class="section-eyebrow reveal">
+        <div class="section-eyebrow-line"></div>
+        <span>What We Accept</span>
+      </div>
+      <h2 class="section-title reveal" style="color:var(--oat)">We buy the stuff<br><em>everyone else ignores.</em></h2>
+      <p class="section-sub reveal" style="color:var(--sand)">General goods in good condition. If it's worth $30+ and fits in a box, we want it. No fashion-only rules. No luxury-only gatekeeping.</p>
+
+```
+  <div class="wwb-grid">
+    <div class="wwb-card reveal">
+      <span class="wwb-icon">🏕️</span>
+      <div class="wwb-name">Outdoor & Sports</div>
+      <div class="wwb-examples">Bikes, ski gear, camping equipment, hiking boots, fitness gear</div>
+      <div class="wwb-range">Payouts $20 – $200+</div>
+    </div>
+    <div class="wwb-card reveal reveal-d1">
+      <span class="wwb-icon">🧸</span>
+      <div class="wwb-name">Kids & Baby</div>
+      <div class="wwb-examples">Strollers, toys, baby gear, kids clothing, educational items</div>
+      <div class="wwb-range">Payouts $15 – $120</div>
+    </div>
+    <div class="wwb-card reveal reveal-d2">
+      <span class="wwb-icon">💻</span>
+      <div class="wwb-name">Small Electronics</div>
+      <div class="wwb-examples">Tablets, monitors, headphones, cameras, smart home devices</div>
+      <div class="wwb-range">Payouts $20 – $150+</div>
+    </div>
+    <div class="wwb-card reveal reveal-d3">
+      <span class="wwb-icon">👕</span>
+      <div class="wwb-name">Branded Apparel</div>
+      <div class="wwb-examples">Patagonia, North Face, Lululemon, Arc'teryx — clean condition only</div>
+      <div class="wwb-range">Payouts $15 – $100</div>
+    </div>
+  </div>
+
+  <div class="wwb-cta reveal">
+    <div class="wwb-cta-text">
+      <div class="wwb-cta-label">Not sure if we'll take it?</div>
+      <div class="wwb-cta-title">Submit it anyway. Worst we say is no — and we'll tell you why.</div>
+    </div>
+    <a href="sell.html" class="btn btn-sage">Submit an Item →</a>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- SOCIAL PROOF -->
+
+  <section class="section proof-section">
+    <div class="container">
+      <div class="section-eyebrow reveal">
+        <div class="section-eyebrow-line"></div>
+        <span>Real Sellers, Real Payouts</span>
+      </div>
+      <h2 class="section-title reveal">People who stopped<br><em>dreading the garage.</em></h2>
+
+```
+  <div class="proof-grid">
+    <div class="proof-card reveal">
+      <div class="proof-quote">"I had a Patagonia jacket sitting in a box for two years. Submitted Monday, had money in my Venmo by Wednesday. I don't know why I didn't do this sooner."</div>
+      <div class="proof-author">Sarah M. — Boulder, CO</div>
+      <div class="proof-payout">Paid $38</div>
+    </div>
+    <div class="proof-card reveal reveal-d1">
+      <div class="proof-quote">"Facebook Marketplace was a nightmare — flaky buyers, weird meetups, lowball offers. Catch All just... worked. Four items, paid for all of them."</div>
+      <div class="proof-author">Marcus T. — Denver, CO</div>
+      <div class="proof-payout">Paid $142 total</div>
+    </div>
+    <div class="proof-card reveal reveal-d2">
+      <div class="proof-quote">"Moving out with a mini fridge and ski gear. Catch All handled everything. Didn't have to post a single listing."</div>
+      <div class="proof-author">Jordan K. — Fort Collins, CO</div>
+      <div class="proof-payout">Paid $165 total</div>
+    </div>
+    <div class="proof-card reveal reveal-d3">
+      <div class="proof-quote">"I'm a professional organizer and I now recommend Catch All to every single client. It's the only service that makes decluttering actually worth it financially."</div>
+      <div class="proof-author">Renee O. — Boulder, CO</div>
+      <div class="proof-payout">Partner</div>
+    </div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- IMPACT -->
+
+  <section class="impact-section">
+    <div class="container">
+      <div class="impact-inner">
+        <div class="reveal">
+          <div class="section-eyebrow" style="margin-bottom:20px">
+            <div class="section-eyebrow-line" style="background:rgba(253,250,245,0.4)"></div>
+            <span style="color:rgba(253,250,245,0.6)">Our Mission</span>
+          </div>
+          <h2 class="impact-title">Good for your wallet.<br><em>Better for the planet.</em></h2>
+          <p class="impact-sub">Every item passes through Catch All gets a second life — resold to someone who needs it, or donated to a local nonprofit partner. Nothing goes to waste.</p>
+          <a href="about.html" class="btn" style="background:rgba(253,250,245,0.15);color:var(--white);border:1px solid rgba(253,250,245,0.2)">Learn About Our Mission →</a>
+        </div>
+        <div class="impact-stats-grid reveal reveal-d1">
+          <div class="impact-stat">
+            <div class="impact-stat-num">847</div>
+            <div class="impact-stat-label">Items resold</div>
+          </div>
+          <div class="impact-stat">
+            <div class="impact-stat-num">203</div>
+            <div class="impact-stat-label">Items donated</div>
+          </div>
+          <div class="impact-stat">
+            <div class="impact-stat-num">2.1K</div>
+            <div class="impact-stat-label">Lbs from landfill</div>
+          </div>
+          <div class="impact-stat">
+            <div class="impact-stat-num">$0</div>
+            <div class="impact-stat-label">Seller fees ever</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+
+  <section class="cta-section">
+    <div class="cta-bg-text">CATCH ALL</div>
+    <div class="container" style="position:relative;z-index:1">
+      <div class="cta-eyebrow reveal">
+        <div class="cta-eyebrow-line"></div>
+        Ready to clear the clutter?
+        <div class="cta-eyebrow-line"></div>
+      </div>
+      <h2 class="cta-title reveal">What's sitting in your<br><em>garage right now?</em></h2>
+      <p class="cta-sub reveal">Upload a few photos. Get a quote today. There's nothing to lose and a cleaner home to gain.</p>
+      <div class="cta-actions reveal">
+        <a href="sell.html" class="btn btn-primary btn-lg">Get My Free Quote →</a>
+        <a href="contact.html" class="hero-link">Or donate instead</a>
+      </div>
+      <div class="cta-region reveal">
+        Serving Boulder · Denver · Fort Collins · Colorado Springs
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">Catch <span>All</span></div>
+          <p class="footer-tagline">The resale button you've always wanted. Upload. Ship. Get paid.</p>
+          <div class="footer-social">
+            <a href="#">Instagram</a>
+            <a href="#">TikTok</a>
+            <a href="#">Facebook</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Sellers</div>
+          <ul class="footer-links">
+            <li><a href="sell.html">Get a Quote</a></li>
+            <li><a href="sell.html#what-we-accept">What We Accept</a></li>
+            <li><a href="about.html#clean-grade">Clean Grade™ System</a></li>
+            <li><a href="contact.html">Donate Items</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Company</div>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="about.html#mission">Our Mission</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Legal & Contact</div>
+          <ul class="footer-links">
+            <li><a href="mailto:hello@catchallresale.com">hello@catchallresale.com</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+            <li><a href="terms.html#privacy">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Catch All Resale LLC · Denver, Colorado</p>
+        <p>Built for the circular economy</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>
